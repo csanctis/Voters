@@ -6,6 +6,8 @@ namespace Voters.Core.Models.Infrastructure
 	{
 		private const string Token_XApiKey = "X-Api-Key";
 
+		public Context() { }
+
 		public Context(HttpContext context)
 		{
 			var header = context?.Request?.Headers?

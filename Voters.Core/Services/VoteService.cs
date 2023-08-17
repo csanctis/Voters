@@ -37,7 +37,7 @@ namespace Voters.Core.Services
 			var result = await _iVoteRepository.CastVote(request);
 
 			return result
-				? response.With(new CastedVoteResponse(result))
+				? response.With(new CastedVoteResponse())
 				: response.WithError(ServiceResponseErrorType.SystemError, new List<ResponseCode>() {
 					new ResponseCode ("1000", "A problem happened.")
 				});

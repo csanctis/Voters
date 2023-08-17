@@ -2,7 +2,7 @@
 {
 	public class ElectionResultsResponse
 	{
-		public Dictionary<string, int> Results { get; set; }
+		public List<KeyValuePair<string, int>> Results { get; set; }
 		public string Response { get; set; }
 	}
 }

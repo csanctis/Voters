@@ -2,16 +2,9 @@
 {
 	public class CastedVoteResponse
 	{
-		public CastedVoteResponse(bool isSuccess)
+		public CastedVoteResponse()
 		{
-			if (isSuccess)
-			{
-				Response = "Your vote has been computed.";
-			}
-			else
-			{
-				Response = "There was a problem casting your vote. Please try again.";
-			}
+			Response = "Your vote has been computed.";
 		}
 
 		public string Response { get; set; }

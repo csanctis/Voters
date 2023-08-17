@@ -45,7 +45,15 @@ namespace Voters.Core.Repositories
 			}
 			else
 			{
-				electionResults.Results = _ballot.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+				List<KeyValuePair<string, int>> sortedList = _ballot.ToList().OrderByDescending(item => item.Value).ToList();
+				if (sortedList.Count > 3)
+				{
+					electionResults.Results = sortedList.Take(3).ToList();
+				}
+				else
+				{
+					electionResults.Results = sortedList;
+				}
 				electionResults.Response = $"At the moment, {electionResults.Results.First().Key} is winning with {electionResults.Results.First().Value} votes";
 			}
 

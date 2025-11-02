@@ -29,8 +29,8 @@ namespace Votes.Core.Test.Repositories
 
 			var vote = _repository.GetElectionResults();
 
-			Assert.IsNotNull(vote);
-			Assert.IsTrue(vote.IsCompletedSuccessfully);
+			Assert.That(vote, Is.Not.Null);
+			Assert.That(vote.IsCompletedSuccessfully, Is.True);
 			Assert.That(vote.Result.Results.Count, Is.EqualTo(3)); // Only Top 3 should show
 			Assert.That(vote.Result.Response, Is.EqualTo("At the moment, John is winning with 4 votes"));
 		}

@@ -37,9 +37,9 @@ namespace Votes.Core.Test.Services
 
             var vote = _voteService.CastVote(context, new CastVoteRequest());
 
-            Assert.IsNotNull(vote);
-            Assert.IsTrue(vote.IsCompletedSuccessfully);
-            Assert.IsTrue(vote.Result.IsValid);
+            Assert.That(vote, Is.Not.Null);
+            Assert.That(vote.IsCompletedSuccessfully, Is.True);
+            Assert.That(vote.Result.IsValid, Is.True);
             Assert.That(vote.Result.Value.Response, Is.EqualTo("Your vote has been computed."));
         }
 
@@ -53,9 +53,9 @@ namespace Votes.Core.Test.Services
 
             var vote = _voteService.CastVote(context, new CastVoteRequest());
 
-            Assert.IsNotNull(vote);
-            Assert.IsTrue(vote.IsCompletedSuccessfully);
-            Assert.IsFalse(vote.Result.IsValid);
+            Assert.That(vote, Is.Not.Null);
+            Assert.That(vote.IsCompletedSuccessfully, Is.True);
+            Assert.That(vote.Result.IsValid, Is.False);
             Assert.That(vote.Result.ResponseCodes.Count, Is.EqualTo(1));
             Assert.That(vote.Result.ResponseCodes.First().Message, Is.EqualTo("A problem happened."));
             Assert.That(vote.Result.ResponseCodes.First().Code, Is.EqualTo("1000"));
@@ -71,8 +71,8 @@ namespace Votes.Core.Test.Services
 
             var vote = _voteService.GetResults(context);
 
-            Assert.IsNotNull(vote);
-            Assert.IsTrue(vote.IsCompletedSuccessfully);
+            Assert.That(vote, Is.Not.Null);
+            Assert.That(vote.IsCompletedSuccessfully, Is.True);
             Assert.That(vote.Result.Results.Count, Is.EqualTo(4));
         }
 
